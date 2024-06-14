@@ -29,10 +29,10 @@ def pad_key(key):
     return key.encode('utf-8')
 
 # Anahtar ve metin kullanıcıdan al
-key = input("Lütfen şifre anahtarını girin (16, 24 veya 32 byte uzunluğunda): ")
+key = input("Şifre anahtarını girin (16, 24 veya 32 byte uzunluğunda): ")
 key = pad_key(key)
 
-plaintext = input("Lütfen şifrelenecek metni girin: ")
+plaintext = input("Şifrelenecek metni girin: ")
 
 # Şifreleme işlemi
 iv, ciphertext = aes_encrypt(key, plaintext)

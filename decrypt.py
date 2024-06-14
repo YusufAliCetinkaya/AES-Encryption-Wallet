@@ -34,9 +34,9 @@ def pad_key(key):
 
 def main():
     # Kullanıcıdan gerekli bilgileri al
-    ciphertext = input("Lütfen şifrelenmiş metni (base64 formatında) girin: ")
-    iv = input("Lütfen IV'yi (base64 formatında) girin: ")
-    key = input("Lütfen şifre anahtarını girin: ")
+    ciphertext = input("Sifrelenmiş metni (base64 formatında) girin: ")
+    iv = input("IV'yi (base64 formatında) girin: ")
+    key = input("Şifre anahtarını girin: ")
 
     # Metni çöz
     plaintext = decrypt_aes(ciphertext, iv, key)

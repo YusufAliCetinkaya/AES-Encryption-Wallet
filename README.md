@@ -64,10 +64,26 @@ Kullanıcıdan şifrelenmiş metin (base64 formatında), IV (base64 formatında)
 
 
 
-## Katkıda Bulunma
+## Base64 Dönüştürme ve IV'nin Önemi
 
-1. Fork yapın.
-2. Yeni bir branch oluşturun (`git checkout -b feature/isim`).
-3. Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik ekle'`).
-4. Branch'e push yapın (`git push origin feature/isim`).
-5. Bir Pull Request oluşturun.
+### Base64 Dönüştürme
+**Neden base64 kullanıyoruz?**
+
+1. **İkili Veriyi Metne Dönüştürme**:
+   - AES şifreleme işlemi sonucunda ortaya çıkan şifrelenmiş metin (ciphertext) ve IV, ikili (binary) veridir. Bu ikili veri, ASCII veya Unicode gibi standart karakter setlerinde görüntülenemez ve saklanamaz.
+   - Base64, ikili veriyi metne dönüştürmek için kullanılan bir kodlama yöntemidir. Bu sayede, şifrelenmiş veri ve IV gibi ikili veriler metin formatında saklanabilir ve iletilebilir.
+
+2. **Veri Transferi ve Saklama**:
+   - E-posta, JSON veya XML gibi bazı veri iletim ve saklama formatları yalnızca metin verilerini destekler. Bu durumda, ikili veriyi base64 formatına dönüştürmek, verinin bu formatlarda güvenli bir şekilde taşınabilmesini sağlar.
+
+### Initialization Vector (IV)
+**Neden IV'ye gerek duyuyoruz?**
+
+1. **Deterministik Şifrelemeyi Önleme**:
+   - Aynı metin her şifrelendiğinde aynı ciphertext üretilirse, bu durum güvenlik açığı yaratır. Saldırganlar, aynı ciphertext'i gördüklerinde aynı metnin şifrelendiğini anlarlar.
+   - IV, her şifreleme işleminde farklı bir başlangıç durumu sağlar. Bu sayede aynı metin, aynı anahtar kullanılsa bile farklı ciphertext'ler üretir. Bu, deterministik şifrelemeyi önler ve güvenliği artırır.
+
+2. **Blok Şifreleme Modları**:
+   - AES, bir blok şifreleme algoritmasıdır ve farklı blok şifreleme modları (CBC, CFB, OFB vb.) kullanabilir. Bu modların çoğu, her blok için bir IV gerektirir.
+   - Özellikle CBC (Cipher Block Chaining) modunda, her bir blok, bir önceki blok ve IV kullanılarak şifrelenir. Bu da, aynı metnin her seferinde farklı şifrelenmesini sağlar.
+

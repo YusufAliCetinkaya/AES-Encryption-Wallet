@@ -1,4 +1,4 @@
-# AES Encryption Wallet
+# Wallet Encrypted With AES
 
 Bu proje, AES (Advanced Encryption Standard) şifreleme algoritmasını kullanarak 12 anahtarı ve private key'i güvenli bir şekilde saklamanızı sağlar. Kullanıcıların kendi şifreleme anahtarlarını kullanarak verilerini şifrelemesine ve çözmesine olanak tanır.
 
@@ -61,6 +61,7 @@ Kullanıcıdan şifrelenmiş metin (base64 formatında), IV (base64 formatında)
 
 - `decrypt_aes` fonksiyonu: Verilen şifrelenmiş metni ve IV'yi kullanarak metnin şifresini çözer.
 - `pad_key` fonksiyonu: Kullanıcının girdiği anahtarın uygun uzunlukta olmasını sağlar.
+
 
 
 ## Katkıda Bulunma
